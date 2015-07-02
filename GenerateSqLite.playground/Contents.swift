@@ -2,8 +2,8 @@
 
 import UIKit
 
-let EntityName = "Expense"
-let ElementList = ["EmpId","Expense_Id","ExpenseDescription","Amount","Currency","Currency_ID","Category_ID","Category_Code","Category_Name","InsedentialDate","FileName","Approved"]
+let EntityName = "Profile"
+let ElementList = ["Id", "Code", "Nationality_Id", "Nationality", "Title_Id", "Rank_Applied_Id", "Record_Type", "Sex", "DOB", "Applied_Date", "Active", "Verified_On", "Passport_No", "Seamenbook_No", "permanent_country_id", "Country", "Name", "Address", "City", "permanent_state_id", "permanent_state_name", "permanent_state_code", "permanent_pin", "Permanent_Mobile_code", "Permanent_Mobile", "permanent_phone_1_code", "permanent_phone_1", "permanent_phone_2_code", "permanent_phone_2", "local_address_1", "local_address_2", "local_address_3", "local_address_4", "local_city", "local_pin", "local_country_id", "local_country_name", "local_state_id", "local_state_name", "local_state_code", "local_Mobile_code", "local_Mobile", "local_phone_1_code", "local_phone_1", "local_phone_2_code", "local_phone_2", "Email", "Current_Rank_Id", "Current_Rank_Name", "Rank_Group_Id", "Rank_Group_Name", "Image_Name", "Image_Url"]
 
 var result:[String] = []
 for index in 0...(ElementList.count-1){
@@ -34,7 +34,7 @@ result.append("if entity.count == 0{")
 result.append("return")
 result.append("}")
 
-var str1 = "let bindStmt = DataManager.db.prepare(\"INSERT INTO " + EntityName + " ("
+var str1 = "var bindStmt = DataManager.db.prepare(\"INSERT INTO " + EntityName + " ("
 var str2 = ""
 for i in 0...(ElementList.count-1){
     str1 = str1 + ElementList[i] + ","
@@ -46,13 +46,11 @@ result.append("let statement = DataManager.db.transaction { _ in")
 result.append("")
 result.append("for index in 0...(entity.count-1) {")
 
-str1 = "bindStmt.run("
+result.append("let bindings:[Binding?] = []")
 for i in 0...(ElementList.count-1){
-    str1 = str1 + " entity[index][\"" + ElementList[i] + "\"].string,"
+    result.append("bindings.append(entity[index][\"" + ElementList[i] + "\"].string)")
 }
-str1 = str1.substringToIndex(str1.endIndex.predecessor()) + ")"
-result.append(str1)
-
+result.append("bindStmt.run(bindings)")
 result.append("}")
 result.append("return .Commit")
 result.append("}")
