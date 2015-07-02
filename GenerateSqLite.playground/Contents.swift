@@ -46,7 +46,7 @@ result.append("let statement = DataManager.db.transaction { _ in")
 result.append("")
 result.append("for index in 0...(entity.count-1) {")
 
-result.append("let bindings:[Binding?] = []")
+result.append("var bindings:[Binding?] = []")
 for i in 0...(ElementList.count-1){
     result.append("bindings.append(entity[index][\"" + ElementList[i] + "\"].string)")
 }
@@ -74,8 +74,10 @@ result.append("var list:[" + EntityName + "] = []")
 result.append("for row in table {")
 result.append("let obj: " + EntityName + " = " + EntityName + "()")
 for i in 0...(ElementList.count-1){
-    let a = "obj." + ElementList[i] + " = (row[" + ElementList[i] + "])!"
-    result.append(a)
+    var a = "obj." + ElementList[i] + " = (row[" + ElementList[i] + "]) == nil ? \"\" "
+    
+    var b = " : (row[" + ElementList[i] + "])!"
+    result.append(a+b)
 }
 result.append("list.append(obj)")
 result.append("}")
