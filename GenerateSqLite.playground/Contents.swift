@@ -64,7 +64,6 @@ result.append("}")
 result.append("")
 
 result.append("static func GetAll() -> [" + EntityName + "]{")
-result.append(EntityName+".CreateTable()")
 result.append("let table = DataManager.db[\"" + EntityName + "\"]")
 for i in 0...(ElementList.count-1){
     let a = "let " + ElementList[i] + " = Expression<String?>(\"" + ElementList[i] + "\")"
