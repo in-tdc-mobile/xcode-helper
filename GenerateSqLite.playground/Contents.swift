@@ -2,8 +2,9 @@
 
 import UIKit
 
-let EntityName = "Profile"
-let ElementList = ["Id", "Code", "Nationality_Id", "Nationality", "Title_Id", "Rank_Applied_Id", "Record_Type", "Sex", "DOB", "Applied_Date", "Active", "Verified_On", "Passport_No", "Seamenbook_No", "permanent_country_id", "Country", "Name", "Address", "City", "permanent_state_id", "permanent_state_name", "permanent_state_code", "permanent_pin", "Permanent_Mobile_code", "Permanent_Mobile", "permanent_phone_1_code", "permanent_phone_1", "permanent_phone_2_code", "permanent_phone_2", "local_address_1", "local_address_2", "local_address_3", "local_address_4", "local_city", "local_pin", "local_country_id", "local_country_name", "local_state_id", "local_state_name", "local_state_code", "local_Mobile_code", "local_Mobile", "local_phone_1_code", "local_phone_1", "local_phone_2_code", "local_phone_2", "Email", "Current_Rank_Id", "Current_Rank_Name", "Rank_Group_Id", "Rank_Group_Name", "Image_Name", "Image_Url"]
+
+let EntityName = "Notification"
+let ElementList = ["Id","Alert_Created_On" ,"MSG_TYPE","MSG_HEADER","MSG_CONTENT","MSG_PUSH_STATUS","MSG_READ_STATUS","TOKEN_ID","DEVICE_TYPE","DURATION"]
 
 var result:[String] = []
 for index in 0...(ElementList.count-1){
@@ -63,6 +64,7 @@ result.append("}")
 result.append("")
 
 result.append("static func GetAll() -> [" + EntityName + "]{")
+result.append(EntityName+".CreateTable()")
 result.append("let table = DataManager.db[\"" + EntityName + "\"]")
 for i in 0...(ElementList.count-1){
     let a = "let " + ElementList[i] + " = Expression<String?>(\"" + ElementList[i] + "\")"
