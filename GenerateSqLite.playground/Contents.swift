@@ -3,8 +3,8 @@
 import UIKit
 
 
-let EntityName = "Notification"
-let ElementList = ["Id","Alert_Created_On" ,"MSG_TYPE","MSG_HEADER","MSG_CONTENT","MSG_PUSH_STATUS","MSG_READ_STATUS","TOKEN_ID","DEVICE_TYPE","DURATION"]
+let EntityName = "Expense"
+let ElementList = ["EmpId", "Expense_Id", "ExpenseDescription", "Amount", "Currency", "Currency_ID", "Category_ID", "Category_Code", "Category_Name", "InsedentialDate", "FileName", "Approved"]
 
 var result:[String] = []
 for index in 0...(ElementList.count-1){
@@ -64,6 +64,9 @@ result.append("}")
 result.append("")
 
 result.append("static func GetAll() -> [" + EntityName + "]{")
+result.append("if !DataManager.db.tableExists(\"" + EntityName + "\"){")
+result.append("CreateTable()")
+result.append("}")
 result.append("let table = DataManager.db[\"" + EntityName + "\"]")
 for i in 0...(ElementList.count-1){
     let a = "let " + ElementList[i] + " = Expression<String?>(\"" + ElementList[i] + "\")"
@@ -89,4 +92,5 @@ result.append("}")
 for index in 0...(result.count-1){
     println(result[index])
 }
+
 
