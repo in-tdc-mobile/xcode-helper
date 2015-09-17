@@ -2,9 +2,9 @@
 
 import UIKit
 
+let EntityName = "VesselPosition"
 
-let EntityName = "Expense"
-let ElementList = ["EmpId", "Expense_Id", "ExpenseDescription", "Amount", "Currency", "Currency_ID", "Category_ID", "Category_Code", "Category_Name", "InsedentialDate", "FileName", "Approved"]
+let ElementList = ["VesselObjectId","PositionDateTime" ,"Latitude","Longitude","Speed","AverageSpeed","Heading"]
 
 var result:[String] = []
 for index in 0...(ElementList.count-1){
@@ -92,5 +92,3 @@ result.append("}")
 for index in 0...(result.count-1){
     println(result[index])
 }
-
-
