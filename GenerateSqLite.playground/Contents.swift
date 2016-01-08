@@ -17,13 +17,13 @@ result.append("static func CreateTable(){")
 result.append("")
 result.append("let table = DataManager.db[\"" + EntityName + "\"]")
 result.append("")
-result.append("DataManager.db.drop(table: table, ifExists: true)")
+result.append("try! DataManager.db.drop(table: table, ifExists: true)")
 for i in 0...(ElementList.count-1){
     let a = "let " + ElementList[i] + " = Expression<String?>(\"" + ElementList[i] + "\")"
     result.append(a)
 }
 result.append("")
-result.append("DataManager.db.create(table: table, ifNotExists: true) { t in")
+result.append("try! DataManager.db.create(table: table, ifNotExists: true) { t in")
 for i in 0...(ElementList.count-1){
     result.append("t.column(" + ElementList[i] + ")")
 }
@@ -35,7 +35,7 @@ result.append("if entity.count == 0{")
 result.append("return")
 result.append("}")
 
-var str1 = "var bindStmt = DataManager.db.prepare(\"INSERT INTO " + EntityName + " ("
+var str1 = "var bindStmt = try! DataManager.db.prepare(\"INSERT INTO " + EntityName + " ("
 var str2 = ""
 for i in 0...(ElementList.count-1){
     str1 = str1 + ElementList[i] + ","

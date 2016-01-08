@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C595E7D1-0305-40A3-A873-09D00D3839B0</string>
+	<key>IDESourceControlProjectName</key>
+	<string>GenerateSqLite Swift2</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E295F13DD3CB779E07738B0A1C817ADBB917B776</key>
+		<string>https://github.com/in-tdc-mobile/xcode-helper.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>GenerateSqLite Swift2.playground</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E295F13DD3CB779E07738B0A1C817ADBB917B776</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/in-tdc-mobile/xcode-helper.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E295F13DD3CB779E07738B0A1C817ADBB917B776</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E295F13DD3CB779E07738B0A1C817ADBB917B776</string>
+			<key>IDESourceControlWCCName</key>
+			<string>xcode-helper</string>
+		</dict>
+	</array>
+</dict>
+</plist>

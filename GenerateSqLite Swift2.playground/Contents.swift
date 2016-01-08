@@ -4,9 +4,9 @@
 
 import UIKit
 
-
-let EntityName = "VesselTrack"
-let ElementList = ["VesselObjectId","PositionDateTime","Latitude","Longitude","Speed","AverageSpeed","Heading"]
+let EntityName = "InspectionMainComments"
+let ElementList = ["ID","INSPECTION_ID","INSP_REPORT_SET_ID","INSP_REPORT_SECTION_ID"
+,"COMMENTS","RISK_RATING"]
 
 var result:[String] = []
 for index in 0...(ElementList.count-1){
@@ -37,7 +37,7 @@ result.append("if entity.count == 0{")
 result.append("return")
 result.append("}")
 
-var str1 = "let bindStmt = DataManager.con.prepare(\"INSERT INTO " + EntityName + " ("
+var str1 = "let bindStmt = try! DataManager.con.prepare(\"INSERT INTO " + EntityName + " ("
 var str2 = ""
 for i in 0...(ElementList.count-1){
     str1 = str1 + ElementList[i] + ","
@@ -62,7 +62,7 @@ result.append("}")
 result.append("")
 
 result.append("static func GetAll() -> [" + EntityName + "]{")
-result.append("if !DataManager.con.tableExists(\"" + EntityName + "\"){")
+result.append("if try! DataManager.con.tableExists(\"" + EntityName + "\"){")
 result.append("CreateTable()")
 result.append("}")
 result.append("let table = Table(\"" + EntityName + "\")")
@@ -73,7 +73,7 @@ for i in 0...(ElementList.count-1){
 result.append("")
 result.append("var list:[" + EntityName + "] = []")
 
-result.append("for row in DataManager.con.prepare(table) {")
+result.append("for row in try! DataManager.con.prepare(table) {")
 result.append("let obj: " + EntityName + " = " + EntityName + "()")
 for i in 0...(ElementList.count-1){
     var a = "obj." + ElementList[i] + " = (row[" + ElementList[i] + "]) == nil ? \"\" "
@@ -90,6 +90,8 @@ result.append("}")
 for index in 0...(result.count-1){
     print(result[index]) //result[index])
 }
+
+result
 
 
 
