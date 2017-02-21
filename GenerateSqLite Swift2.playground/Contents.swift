@@ -1,14 +1,17 @@
 
 import UIKit
 
-let EntityName = "Beneficiary"
+let EntityName = "BankAccountsList"
 
-//"PortId": "1"
-//ObjectId: "573709",
-//CountryId: "162",
-//"Next_Port_ETA": "05-Aug-2014 01:30:00 UTC"
-
-let ElementList = ["SUR_NAME", "MIDDLE_NAME", "FIRST_NAME", "BIRTH_PLACE","SEX","NOK","NATIONALITY_ID","ID","RELATION_ID","RELATION_NAME","DOB"]
+let ElementList = ["BENEFICIARY_NAME",
+                   "BENIFICIARY_ID",
+                   "ACCOUNT_NO",
+                   "IBAN",
+                   "CURRENCY_ID",
+                   "BANK_BRANCH_MF_ID",
+                   "COMPANY_BANK_ID",
+                   "SELF_ACCOUNT",
+                   "APPROVED","BANK_ID", "BANK_NAME", "BRANCH_ID", "BRANCH_NAME","SWIFT_CODE","ABA_NO","SORT_CODE","IFSC_CODE","COUNTRY_ID","COUNTRY_NAME","CITY","ADDRESS","ACTIVE"]
 
 var result: [String] = []
 for index in 0 ... (ElementList.count - 1) {
@@ -65,7 +68,7 @@ result.append("}")
 result.append("")
 
 result.append("static func GetAll() -> [" + EntityName + "]{")
-result.append("if try! DataManager.con.tableExists(\"" + EntityName + "\"){")
+result.append("if try! DataManager.con.tableExists(Table("+EntityName+".TableName)){")
 result.append("CreateTable()")
 result.append("}")
 result.append("let table = Table("+EntityName+".TableName)")
