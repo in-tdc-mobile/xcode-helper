@@ -17,5 +17,10 @@
          selectedRepresentationIndex = "0"
          shouldTrackSuperviewWidth = "NO">
       </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/subinkuriakose/Documents/xcode-helper/GenerateSqLite%20Swift2.playground#CharacterRangeLen=18&amp;CharacterRangeLoc=156&amp;EndingLineNumber=10&amp;StartingLineNumber=8&amp;Timestamp=512298740.557685"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
    </TimelineItems>
 </Timeline>

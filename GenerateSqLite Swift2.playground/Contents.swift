@@ -1,18 +1,13 @@
 
 import UIKit
 
-let EntityName = "BankAccountsList"
+let EntityName = "AllotmentSupportData"
 
-let ElementList = ["BENEFICIARY_NAME",
-                   "BENIFICIARY_ID",
-                   "ACCOUNT_NO",
-                   "IBAN",
-                   "CURRENCY_ID",
-                   "BANK_BRANCH_MF_ID",
-                   "COMPANY_BANK_ID",
-                   "SELF_ACCOUNT",
-                   "APPROVED","BANK_ID", "BANK_NAME", "BRANCH_ID", "BRANCH_NAME","SWIFT_CODE","ABA_NO","SORT_CODE","IFSC_CODE","COUNTRY_ID","COUNTRY_NAME","CITY","ADDRESS","ACTIVE"]
-
+let ElementList = ["ID",
+                   "APPROVAL_STATUS",
+                   "PAYMENT_STATUS",
+                  "TRANSACTION_DATE","PERIOD","MONTH", "YEAR"
+]
 var result: [String] = []
 for index in 0 ... (ElementList.count - 1) {
 	result.append("var " + ElementList[index] + ": String = \"\"")
@@ -67,8 +62,13 @@ result.append("}")
 
 result.append("")
 
+result.append("static func deleteData() {")
+    
+result.append("_ = try! DataManager.con.run(Table("+EntityName+".TableName).delete())")
+result.append("}")
+
 result.append("static func GetAll() -> [" + EntityName + "]{")
-result.append("if try! DataManager.con.tableExists(Table("+EntityName+".TableName)){")
+result.append("if try! DataManager.con.tableExists("+EntityName+".TableName){")
 result.append("CreateTable()")
 result.append("}")
 result.append("let table = Table("+EntityName+".TableName)")
